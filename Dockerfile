@@ -65,6 +65,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
 RUN apt-get install --yes make cmake gdb clang openjdk-11-jre-headless uuid-dev
+RUN apt-get install --yes git
 
 ARG PKGS_DIR_ANTLR_RUNTIME
 ARG ANTLR_VERSION
