@@ -63,7 +63,7 @@ RUN mvn -DskipTests install
 
 #LLVM Build stage
 FROM ubuntu:latest as llvmbuild
-ARG DEBIAN_FRONTEND
+ARG DEBIAN_FRONTEND=noninteractive
 ARG LLVM
 ARG LLV_SOURCE_DIR=llvm-project-${LLVM}
 
