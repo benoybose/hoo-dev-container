@@ -26,7 +26,6 @@ ARG PKGS_DIR=/packages
 ARG PKGS_DIR_ANTLR_RUNTIME
 ARG SOURCE_DIR_ANTLR_RUNTIME=${DOWNLOAD_DIR_ANTLR}/antlr4-${ANTLR_VERSION}/runtime/Cpp
 ARG SOURCE_DIR_ANTLR=${DOWNLOAD_DIR_ANTLR}/antlr4-${ANTLR_VERSION}
-ENV CXXFLAGS="-stdlib=libc++"
 
 RUN mkdir -p ${DOWNLOAD_DIR_ANTLR}
 RUN mkdir -p ${PKGS_DIR_ANTLR_RUNTIME}
@@ -62,7 +61,8 @@ RUN apt-get update
 RUN apt-get install --yes gdb\
  openjdk-11-jre-headless\
  uuid-dev\
- libstdc++-10-dev
+ libstdc++-10-dev\
+ git
 
 ARG PKGS_DIR_ANTLR_RUNTIME
 ARG ANTLR_VERSION
