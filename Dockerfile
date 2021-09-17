@@ -13,8 +13,7 @@ RUN apt-get install --yes curl\
  uuid-dev\
  git\ 
  openjdk-11-jre-headless\
- maven\
- libstdc++-10-dev
+ maven
 
 ARG ANTLR_VERSION
 ARG ANTLR_JAR_LOCATION
@@ -26,6 +25,7 @@ ARG PKGS_DIR=/packages
 ARG PKGS_DIR_ANTLR_RUNTIME
 ARG SOURCE_DIR_ANTLR_RUNTIME=${DOWNLOAD_DIR_ANTLR}/antlr4-${ANTLR_VERSION}/runtime/Cpp
 ARG SOURCE_DIR_ANTLR=${DOWNLOAD_DIR_ANTLR}/antlr4-${ANTLR_VERSION}
+ENV CXXFLAGS="-stdlib=libc++"
 
 RUN mkdir -p ${DOWNLOAD_DIR_ANTLR}
 RUN mkdir -p ${PKGS_DIR_ANTLR_RUNTIME}
@@ -60,8 +60,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get install --yes gdb\
  openjdk-11-jre-headless\
- uuid-dev\
- libstdc++-10-dev
+ uuid-dev
 
 ARG PKGS_DIR_ANTLR_RUNTIME
 ARG ANTLR_VERSION
@@ -72,6 +71,7 @@ ENV ANTLR4_JAR_LOCATION=${ANTLR_JAR_LOCATION}
 ENV CC=/usr/local/bin/clang
 ENV CXX=/usr/local/bin/clang++
 ENV CMAKE_GENERATOR="Unix Makefiles"
+ENV CXXFLAGS="-stdlib=libc++"
 
 COPY --from=builder ${PKGS_DIR_ANTLR_RUNTIME} /usr/local
 COPY --from=builder ${ANTLR_INSTALL_DIR} ${ANTLR_INSTALL_DIR}
