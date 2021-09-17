@@ -71,7 +71,7 @@ ENV ANTLR4_JAR_LOCATION=${ANTLR_JAR_LOCATION}
 ENV CC=/usr/local/bin/clang
 ENV CXX=/usr/local/bin/clang++
 ENV CMAKE_GENERATOR="Unix Makefiles"
-ENV CXXFLAGS="-stdlib=libc++"
+ENV CXXFLAGS="-stdlib=libc++ -i/usr/local/include/c++/v1"
 
 COPY --from=builder ${PKGS_DIR_ANTLR_RUNTIME} /usr/local
 COPY --from=builder ${ANTLR_INSTALL_DIR} ${ANTLR_INSTALL_DIR}
